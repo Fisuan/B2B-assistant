@@ -9,17 +9,17 @@ export default function About() {
 
   const team = [
     {
-      name: 'Анна Петрова',
+      name: 'Куленбай Жантөре',
       role: 'CEO',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80',
+      image: '',
     },
     {
-      name: 'Иван Смирнов',
+      name: 'Елюбай Ернар',
       role: 'CTO',
       image: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80',
     },
     {
-      name: 'Мария Иванова',
+      name: 'Ахметов Ералы',
       role: 'COO',
       image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80',
     },
