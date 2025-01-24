@@ -10,8 +10,9 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Главная', path: '/' },
     { name: 'Услуги', path: '/services' },
-    { name: 'О нас', path: '/about' },
     { name: 'Контакты', path: '/contact' },
+    { name: 'Войти', path: '/login' },
+    { name: 'Регистрация', path: '/signup' },
   ];
 
   return (
@@ -51,10 +52,7 @@ export default function Navbar() {
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 dark:text-gray-200"
-            >
+            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 dark:text-gray-200">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>

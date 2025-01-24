@@ -42,16 +42,16 @@ export default function Contact() {
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
                 <Mail className="h-6 w-6 text-blue-600" />
-                <span className="text-gray-700 dark:text-gray-300">info@company.com</span>
+                <span className="text-gray-700 dark:text-gray-300">kulenbai_zh0922@pvl.nis.edu.kz</span>
               </div>
               <div className="flex items-center space-x-4">
                 <Phone className="h-6 w-6 text-blue-600" />
-                <span className="text-gray-700 dark:text-gray-300">+7 (999) 123-45-67</span>
+                <span className="text-gray-700 dark:text-gray-300">+7 (707) 744-03-18</span>
               </div>
               <div className="flex items-center space-x-4">
                 <MapPin className="h-6 w-6 text-blue-600" />
                 <span className="text-gray-700 dark:text-gray-300">
-                  Москва, ул. Примерная, д. 123
+                  Павлодар, ул. Ткачева 16/2
                 </span>
               </div>
             </div>
