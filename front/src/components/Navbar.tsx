@@ -1,19 +1,29 @@
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import MySwitch from './UI/switch/MySwitch';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGooglePlusG, faFacebookF, faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import MyInputPassword from './UI/input/MyInputPassword';
+import MyInputUser from './UI/input/MyInputUser';
+import MyInputEmail from './UI/input/MyInputEmail';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false); 
+  const [isActive, setIsActive] = useState(false); 
   const { theme, toggleTheme } = useTheme();
 
   const navLinks = [
     { name: 'Главная', path: '/' },
     { name: 'Услуги', path: '/services' },
     { name: 'Контакты', path: '/contact' },
-    { name: 'Войти', path: '/login' },
-    { name: 'Регистрация', path: '/signup' },
   ];
+
+  const toggleForm = (action: string) => {
+    setIsActive(action === 'register');
+  };
 
   return (
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-50 shadow-lg">
@@ -36,21 +46,24 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
+
+              {/* Кнопка регистрации */}
               <button
-                onClick={toggleTheme}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200"
+                onClick={() => setIsModalVisible(true)}
+                className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium"
               >
-                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                Регистрация
+              </button>
+
+              <button className='mb-1' onClick={toggleTheme}>
+                <MySwitch toggleTheme={toggleTheme} isDarkMode={theme === 'dark'} />
               </button>
             </div>
           </div>
 
           <div className="md:hidden flex items-center">
-            <button
-              onClick={toggleTheme}
-              className="p-2 mr-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200"
-            >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            <button className='mb-6' onClick={toggleTheme}>
+              <MySwitch toggleTheme={toggleTheme} isDarkMode={theme === 'dark'} />
             </button>
             <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 dark:text-gray-200">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -73,6 +86,67 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* Модальное окно */}
+      {isModalVisible && (
+        <div
+          className={`modal-overlay ${isModalVisible ? 'active' : ''} ${theme === 'dark' ? 'dark' : ''}`}
+          onClick={() => setIsModalVisible(false)}
+        >
+          <div className={`myModalContent ${theme === 'dark' ? 'dark' : ''}`} onClick={(e) => e.stopPropagation()}>
+            <div className="modal-wrapper">
+              <button className="close-btn" onClick={() => setIsModalVisible(false)}>X</button>
+              <div className={`container ${isActive ? 'active' : ''}`} id="container">
+                <div className="form-container sign-up">
+                  <form>
+                    <h1>Create Account</h1>
+                    <div className="social-icons">
+                      <a href="#" className="icon"><FontAwesomeIcon icon={faGooglePlusG} /></a>
+                      <a href="#" className="icon"><FontAwesomeIcon icon={faFacebookF} /></a>
+                      <a href="#" className="icon"><FontAwesomeIcon icon={faGithub} /></a>
+                      <a href="#" className="icon"><FontAwesomeIcon icon={faLinkedinIn} /></a>
+                    </div>
+                    <span>or use your email for registration</span>
+                    <MyInputUser />
+                    <MyInputEmail />
+                    <MyInputPassword />
+                    <button type="button">Sign Up</button>
+                  </form>
+                </div>
+                <div className="form-container sign-in">
+                  <form>
+                    <h1>Sign In</h1>
+                    <div className="social-icons">
+                      <a href="#" className="icon"><FontAwesomeIcon icon={faGooglePlusG} /></a>
+                      <a href="#" className="icon"><FontAwesomeIcon icon={faFacebookF} /></a>
+                      <a href="#" className="icon"><FontAwesomeIcon icon={faGithub} /></a>
+                    </div>
+                    <span>or use your email password</span>
+                    <MyInputEmail />
+                    <MyInputPassword />
+                    <a href="#">Forget Your Password?</a>
+                    <button type="button">Sign In</button>
+                  </form>
+                </div>
+                <div className="toggle-container">
+                  <div className="toggle">
+                    <div className="toggle-panel toggle-left">
+                      <h1>Welcome Back!</h1>
+                      <p>Enter your personal details to use all of site features</p>
+                      <button onClick={() => toggleForm('login')}>Sign In</button>
+                    </div>
+                    <div className="toggle-panel toggle-right">
+                      <h1>Hello, Friend!</h1>
+                      <p>Register with your personal details to use all of site features</p>
+                      <button onClick={() => toggleForm('register')}>Sign Up</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

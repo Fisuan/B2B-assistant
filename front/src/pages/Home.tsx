@@ -1,7 +1,8 @@
-import { ArrowRight, BarChart, Shield, Users } from 'lucide-react';
+import { BarChart, Shield, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ernarPhoto from './ImagesForPages/ErnarPhoto.jpg';
 import zhantoPhoto from './ImagesForPages/ZhantoPhoto.jpg';
+import MyButton from '../components/UI/button/MyButton.tsx';
 
 export default function Home() {
   const team = [
@@ -72,9 +73,8 @@ export default function Home() {
             <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
               <Link
                 to="/chatpage"
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800 transition-colors">
-                Начать сейчас
-                <ArrowRight className="ml-2 h-5 w-5" />
+                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md">
+                <MyButton/>
               </Link>
             </div>
           </div>
@@ -142,9 +142,9 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="mt-11 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-2">
+          <div className="mt-12 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-2">
             {team2.map((member, index) => (
-              <div key={index} className="text-center">
+              <div key={index} className="text-center p-0 m-0">
                 <div className="space-y-4">
                   <img
                     className="mx-auto h-40 w-40 rounded-full"

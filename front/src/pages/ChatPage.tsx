@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import MySend from '../components/UI/button/MySend'
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<{ text: string; sender: string }[]>([]);
@@ -13,7 +14,7 @@ export default function ChatPage() {
     setInput('');
 
     try {
-      const response = await fetch('https://api.your-rag-backend.com/chat', {
+      const response = await fetch('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', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input }),
@@ -34,7 +35,7 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="flex flex-col h-screen bg-white-100 dark:bg-gray-900">
       <div className="flex-grow overflow-auto p-4">
         {messages.map((msg, index) => (
           <div
@@ -52,7 +53,7 @@ export default function ChatPage() {
       <div className="p-4 bg-white dark:bg-gray-800 shadow-md flex">
         <input
           type="text"
-          className="flex-grow p-2 border rounded-lg text-gray-900 dark:text-gray-200 dark:bg-gray-700"
+          className="flex-grow p-2 border-red-500 rounded-lg text-gray-900 dark:text-gray-200 dark:bg-gray-700"
           placeholder="Type a message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -60,9 +61,8 @@ export default function ChatPage() {
         />
         <button
           onClick={handleSendMessage}
-          className="ml-2 p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-        >
-          Send
+        ><MySend/>
+  
         </button>
       </div>
     </div>
