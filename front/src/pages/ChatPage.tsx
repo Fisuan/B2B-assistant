@@ -14,7 +14,7 @@ export default function ChatPage() {
     setInput('');
 
     try {
-      const response = await fetch('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', {
+      const response = await fetch('', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input }),

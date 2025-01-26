@@ -1,4 +1,4 @@
-import React from 'react';
+
 import styled from 'styled-components';
 
 const MyInputEmail = () => {
@@ -24,7 +24,7 @@ const StyledWrapper = styled.div`
   }
 
   .input {
-    width: 450px;
+    width: 350px;
     height: 55px;
     line-height: 40px;
     padding: 0 5rem;
@@ -54,6 +54,15 @@ const StyledWrapper = styled.div`
     fill: none;
     width: 1rem;
     height: 1rem;
-  }`;
+  }
+  
+  .dark .input{
+    @apply bg-gray-800 text-black;
+  }
+
+  .dark .group{
+    @apply bg-gray-800 text-black  
+  }
+`;
 
 export default MyInputEmail;

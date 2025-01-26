@@ -219,75 +219,43 @@
 .container.active .toggle-right{
     transform: translateX(200%);
 }
-
 .close-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: transparent;
+    top: 10px;
+    right: 15px;
+    background: none;
     border: none;
-    color: #333;  
-    font-size: 24px;
+    font-size: 1.5rem;
     cursor: pointer;
-    z-index: 1100; 
-    pointer-events: auto;
-}
-
+    color: #333;
+  }
+  
+  .dark .close-btn {
+    color: #e5e7eb;
+  }
 .close-btn:hover {
     color: #ff6347;
 }
 
-.myModalContent.dark {
-    background-color: #333; /* темный фон */
-    color: #fff; /* белый текст */
+.dark .myModalContent {
+    @apply bg-gray-800 text-black shadow-lg;
+  }
+
+.dark .container {
+    @apply bg-gray-800 text-white shadow-lg;
 }
 
-.container.dark {
-    background-color: #444; /* темный контейнер */
+.dark .container form {
+    @apply bg-gray-800 text-white;
 }
 
-input.dark, button.dark {
-    background-color: #555; /* темный фон для инпутов и кнопок */
-    color: #fff; /* белый текст */
+.dark .container form a {
+    @apply bg-gray-800 text-white;
 }
 
-.container .form-container {
-    background-color: #444; /* темный фон для формы */
+.dark .container input {
+    @apply bg-gray-800 text-black shadow-lg;
 }
 
-.container .form-container input {
-    background-color: #555; /* темный фон для инпутов */
-    color: #fff; /* белый текст в инпутах */
-    border: 1px solid #666; /* светлая граница для инпутов */
-}
-
-.container .form-container button {
-    background-color: #512da8; /* кнопка с цветом из основной темы */
-    color: #fff; /* белый текст */
-}
-
-/* Стиль кнопки и инпутов при темной теме */
-.container .social-icons a {
-    background-color: #444; /* темный фон для иконок соцсетей */
-    border: 1px solid #666; /* светлая граница */
-}
-
-.container .social-icons a:hover {
-    background-color: #555; /* темный фон при наведении */
-}
-
-.toggle-container {
-    background-color: #444; /* темный фон для контейнера переключателя */
-}
-
-.toggle {
-    background-color: #333; /* темный фон для блока переключателя */
-    background: linear-gradient(to right, #444, #333); /* градиентный фон */
-}
-
-/* Для панелей переключения (sign-in и sign-up) */
-.toggle-left, .toggle-right {
-    background-color: #333; /* темный фон для панелей */
-}
 
 

@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import MySwitch from './UI/switch/MySwitch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGooglePlusG, faFacebookF, faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faGooglePlusG, faFacebookF, faGithub} from '@fortawesome/free-brands-svg-icons';
 import MyInputPassword from './UI/input/MyInputPassword';
 import MyInputUser from './UI/input/MyInputUser';
 import MyInputEmail from './UI/input/MyInputEmail';
+import './style.css';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,7 +63,7 @@ export default function Navbar() {
           </div>
 
           <div className="md:hidden flex items-center">
-            <button className='mb-6' onClick={toggleTheme}>
+            <button onClick={toggleTheme}>
               <MySwitch toggleTheme={toggleTheme} isDarkMode={theme === 'dark'} />
             </button>
             <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 dark:text-gray-200">
@@ -107,7 +108,6 @@ export default function Navbar() {
                       <a href="#" className="icon"><FontAwesomeIcon icon={faGooglePlusG} /></a>
                       <a href="#" className="icon"><FontAwesomeIcon icon={faFacebookF} /></a>
                       <a href="#" className="icon"><FontAwesomeIcon icon={faGithub} /></a>
-                      <a href="#" className="icon"><FontAwesomeIcon icon={faLinkedinIn} /></a>
                     </div>
                     <span>or use your email for registration</span>
                     <MyInputUser />

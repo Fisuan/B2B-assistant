@@ -1,5 +1,6 @@
 import { BarChart, Shield, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import BrainIcon from './ImagesForPages/BrainIcon.png';
 import ernarPhoto from './ImagesForPages/ErnarPhoto.jpg';
 import zhantoPhoto from './ImagesForPages/ZhantoPhoto.jpg';
 import MyButton from '../components/UI/button/MyButton.tsx';
@@ -52,8 +53,8 @@ export default function Home() {
       description: 'Эффективное взаимодействие и совместная работа в команде',
     },
     {
-      icon: <Users className="h-6 w-6 text-blue-600" />,
-      title: 'Адаптированный Искусственный Интелект',
+      icon: <img src={BrainIcon} alt="Brain" className="h-6 w-6" />,
+      title: 'Адаптированный Искусственный Интеллект',
       description: 'Эффективные решения от Специализированного Искусственного Интелекта',
     },
   ];
