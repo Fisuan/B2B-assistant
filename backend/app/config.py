@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     API_V1_PREFIX: str = "/api/v1"
     
     # Database settings
-    DATABASE_URL: str = "sqlite:///./app.db"
+    DATABASE_URL: str = " "
     
     # OpenAI settings
     OPENAI_API_KEY: str
