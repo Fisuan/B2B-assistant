@@ -1,5 +1,5 @@
 {
-  "name": "package.json",
+  "name": "vite-react-typescript-starter",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -40,5 +40,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fisuan/B2B-assistant.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Fisuan/B2B-assistant/issues"
+  },
+  "homepage": "https://github.com/Fisuan/B2B-assistant#readme",
   "description": ""
 }
