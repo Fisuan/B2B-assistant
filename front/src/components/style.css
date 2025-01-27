@@ -1,16 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-::selection{
-    background-color: #000;
-    color: #eee;
-}
-
-
 *{
     justify-content: center;
     justify-items: auto;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+}
+
+.modal-wrapper {
+    justify-content: center; 
+    align-items: center; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000; 
+    display: flex;
+    background: rgba(0,0,0,0.5);
+}
+.modal-overlay.active {
+    display: flex;
+  }
+
+.myModalContent {
+    background-color: #fff;
+    color: #333;
 }
 
 .container{
@@ -35,6 +50,12 @@
     font-size: 12px;
 }
 
+.container a{
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+}
 
 .container button{
     background-color: #512da8;

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import ernarPhoto from '../components/Images/ErnarPhoto.jpg';
 import zhantoPhoto from '../components/Images/ZhantoPhoto.jpg';
+import eralyPhoto from '../components/Images/EralyPhoto.jpeg'
 
 const team = [
     {
@@ -13,7 +14,7 @@ const team = [
     {
       name: 'Ахметов Ералы',
       role: 'CIO',
-      image: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80',
+      image: eralyPhoto,
       instagram: "_akhmk_",
       instaLink: "https://www.instagram.com/_akhmk_",
     },
@@ -23,20 +24,6 @@ const team = [
       image: ernarPhoto,
       instagram: "ernaar_0",
       instaLink: "https://www.instagram.com/ernaar_0",
-    },
-    {
-      name: 'Зейнолла Мағжан',
-      role: 'CPO',
-      image: zhantoPhoto,
-      instagram: "zmagjestic",
-      instaLink: "https://www.instagram.com/zmagjestic",
-    },
-    {
-      name: 'Берікұлы Сабыр',
-      role: 'CTO',
-      image: zhantoPhoto,
-      instagram: "",
-      instaLink: "https://www.instagram.com",
     },
   ];
 

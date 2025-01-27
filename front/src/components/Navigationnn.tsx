@@ -3,19 +3,14 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import MySwitch from './UI/switch/MySwitch';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGooglePlusG, faFacebookF, faGithub} from '@fortawesome/free-brands-svg-icons';
-import MyInputPassword from './UI/input/MyInputPassword';
-import MyInputUser from './UI/input/MyInputUser';
-import MyInputEmail from './UI/input/MyInputEmail';
 import { Menu, X } from 'lucide-react';
-import './style.css';
+import { MyRegistration } from './UI/button/MyRegistration';
+import WebIcon from './Images/photo_2025-01-27_21-28-19-removebg.png'
+
 
 const Navigationnn = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [isModalVisible, setIsModalVisible] = useState(false); 
-  const [isActive, setIsActive] = useState(false); 
   const { theme, toggleTheme } = useTheme();
   const navLinks = [
     { name: 'Главный', path: '/' },
@@ -31,13 +26,15 @@ const Navigationnn = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
    
-  const toggleForm = (action: string) => {
-    setIsActive(action === 'register');
-  };
+  
   return (
     <motion.nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/80 backdrop-blur-lg shadow-sm' : 'bg-transparent'
+      className={`fixed w-full z-[50] transition-all duration-300 ${
+        scrolled
+    ? theme === 'dark'
+      ? 'bg-gray-900/80 backdrop-blur-lg shadow-sm'
+      : 'bg-white/80 backdrop-blur-lg shadow-sm'
+    : 'bg-transparent'
       }`}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -49,8 +46,8 @@ const Navigationnn = () => {
             className="text-xl font-semibold"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          ><Link to="/" className="text-2xl font-extrabold text-blue-600 dark:text-blue-400">
-                        B2B Solutions
+          ><Link to="/" className="flex text-2xl font-extrabold" style={{ color: 'rgb(11, 34, 245)' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                      <img src={WebIcon} className=' h-16 w-20'/> <p className='mt-4'>B2B Solutions</p>
             </Link>
           </motion.span>
           
@@ -64,12 +61,7 @@ const Navigationnn = () => {
                 {link.name}
               </Link>
               ))}
-              <button
-                onClick={() => setIsModalVisible(true)}
-                className="text-gray-700 font-extrabold dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              >
-                Регистрация
-              </button>
+              <MyRegistration/>
               <button className='mb-1' onClick={toggleTheme}>
                 <MySwitch toggleTheme={toggleTheme} isDarkMode={theme === 'dark'} />
               </button>
@@ -104,65 +96,7 @@ const Navigationnn = () => {
         </div>
       )}
 
-      {/* Модальное окно */}
-{isModalVisible && (
-  <div
-    className={`modal-overlay ${isModalVisible ? 'active display-flex' : ''} ${theme === 'dark' ? 'dark' : ''}`}
-    onClick={() => setIsModalVisible(false)}
-  >
-    <div className={`myModalContent bg-color-fff text-333 ${theme === 'dark' ? 'dark' : ''}`} onClick={(e) => e.stopPropagation()}>
-      <div className="modal-wrapper fixed top-0 left-0 right-0 bottom-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
-        <button className="close-btn" onClick={() => setIsModalVisible(false)}>X</button>
-        <div className={`container ${isActive ? 'active' : ''}`} id="container">
-          <div className="form-container sign-up">
-            <form className="bg-white flex items-center justify-center flex-col px-[40px] h-full">
-              <h1>Создать аккаунт</h1>
-              <div className="social-icons">
-                <a href="#" className="icon"><FontAwesomeIcon icon={faGooglePlusG} /></a>
-                <a href="#" className="icon"><FontAwesomeIcon icon={faFacebookF} /></a>
-                <a href="#" className="icon"><FontAwesomeIcon icon={faGithub} /></a>
-              </div>
-              <span className='text-[12px]'>или используйте ваш email для регистрации</span>
-              <MyInputUser />
-              <MyInputEmail />
-              <MyInputPassword />
-              <button className="bg-[#512da8] text-white text-[12px] py-[10px] px-[45px] border-[1px] border-transparent rounded-[8px] font-semibold tracking-[0.5px] uppercase mt-[10px] cursor-pointer" type="button">Зарегистрироваться</button>
-            </form>
-          </div>
-          <div className="form-container sign-in">
-            <form className="bg-white flex items-center justify-center flex-col px-[40px] h-full">
-              <h1>Войти</h1>
-              <div className="social-icons">
-                <a href="#" className="icon"><FontAwesomeIcon icon={faGooglePlusG} /></a>
-                <a href="#" className="icon"><FontAwesomeIcon icon={faFacebookF} /></a>
-                <a href="#" className="icon"><FontAwesomeIcon icon={faGithub} /></a>
-              </div>
-              <span className='text-[12px]'>или используйте пароль от вашего email</span>
-              <MyInputEmail />
-              <MyInputPassword />
-              <a href="#" className="text-sm text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-500 transition-all my-4">Забыли пароль?</a>
-              <button className="bg-[#512da8] text-white text-[12px] py-[10px] px-[45px] border-[1px] border-transparent rounded-[8px] font-semibold tracking-[0.5px] uppercase mt-[10px] cursor-pointer" type="button">Войти</button>
-            </form>
-          </div>
-          <div className="toggle-container">
-            <div className="toggle">
-              <div className="toggle-panel toggle-left">
-                <h1>С возвращением!</h1>
-                <p className='text-[14px] leading-[20px] tracking-[0.3px] my-[20px]'>Введите ваши данные для доступа ко всем функциям сайта</p>
-                <button className="bg-[#512da8] text-white text-[12px] py-[10px] px-[45px] border-[1px] border-transparent rounded-[8px] font-semibold tracking-[0.5px] uppercase mt-[10px] cursor-pointer" onClick={() => toggleForm('login')}>Войти</button>
-              </div>
-              <div className="toggle-panel toggle-right">
-                <h1>Привет, друг!</h1>
-                <p className='text-[14px] leading-[20px] tracking-[0.3px] my-[20px]'>Зарегистрируйтесь с вашими личными данными для доступа ко всем функциям сайта</p>
-                <button className="bg-[#512da8] text-white text-[12px] py-[10px] px-[45px] border-[1px] border-transparent rounded-[8px] font-semibold tracking-[0.5px] uppercase mt-[10px] cursor-pointer" onClick={() => toggleForm('register')}>Зарегистрироваться</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-)}
+      
     </motion.nav>
   );
 };
