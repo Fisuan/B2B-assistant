@@ -8,16 +8,18 @@ export default function ChatPage() {
   const handleSendMessage = async () => {
     if (!input.trim()) return;
 
-    // Создание нового сообщения пользователя
     const userMessage = { text: input, sender: 'user' };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
     setInput('');
 
     try {
-      const response = await fetch('', {
+      const response = await fetch('http://localhost:8000/api/v1/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input }),
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}` // если есть токен
+        },
+        body: JSON.stringify({ text: input }),
       });
 
       if (!response.ok) {
@@ -25,12 +27,14 @@ export default function ChatPage() {
       }
 
       const data = await response.json();
-      const aiMessage = { text: data.reply || 'No response from AI', sender: 'ai' };
-
+      const aiMessage = { text: data.response, sender: 'ai' };
       setMessages((prevMessages) => [...prevMessages, aiMessage]);
     } catch (error) {
-      console.error('Error fetching AI response:', error);
-      setMessages((prevMessages) => [...prevMessages, { text: 'Error: Unable to fetch response.', sender: 'ai' }]);
+      console.error('Error:', error);
+      setMessages((prevMessages) => [...prevMessages, { 
+        text: 'Error: Unable to fetch response.', 
+        sender: 'ai' 
+      }]);
     }
   };
 

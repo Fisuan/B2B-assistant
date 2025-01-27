@@ -1,11 +1,16 @@
-from fastapi import APIRouter, Depends, HTTPException
-from fastapi.security import OAuth2PasswordBearer
+from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from sqlalchemy.orm import Session
 from app.services.llm_service import LLMService
+from app.database import get_db
+from app.services.auth import AuthService
 from typing import List
 from pydantic import BaseModel
 
 router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+auth_service = AuthService()
+llm_service = LLMService()
 
 class ChatMessage(BaseModel):
     role: str
@@ -14,16 +19,31 @@ class ChatMessage(BaseModel):
 class ChatRequest(BaseModel):
     messages: List[ChatMessage]
 
+class Message(BaseModel):
+    text: str
+
 @router.post("/chat")
-async def chat_endpoint(
-    chat_request: ChatRequest,
-    token: str = Depends(oauth2_scheme)
-):
+async def chat_endpoint(message: dict):
     try:
-        llm_service = LLMService()
-        messages = [{"role": msg.role, "content": msg.content} for msg in chat_request.messages]
-        response = await llm_service.get_assistant_response(messages)
+        response = await llm_service.get_assistant_response([
+            {"role": "user", "content": message["text"]}
+        ])
         return {"response": response}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.post("/token")
+async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+    user = auth_service.authenticate_user(db, form_data.username, form_data.password)
+    if not user:
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+    access_token = auth_service.create_access_token(data={"sub": user.email})
+    return {"access_token": access_token, "token_type": "bearer"}
+
+@router.post("/test")
+async def test_endpoint(message: Message):
+    try:
+        return {"message": f"Received: {message.text}"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
