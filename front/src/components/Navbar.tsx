@@ -17,9 +17,9 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
 
   const navLinks = [
-    { name: 'Главная', path: '/' },
-    { name: 'Услуги', path: '/services' },
+    { name: 'Главный', path: '/' },
     { name: 'Контакты', path: '/contact' },
+    { name: 'B2B-assistant', path: '/chatpage' },
   ];
 
   const toggleForm = (action: string) => {
@@ -98,7 +98,7 @@ export default function Navbar() {
           onClick={() => setIsModalVisible(false)}
         >
           <div className={`myModalContent ${theme === 'dark' ? 'dark' : ''}`} onClick={(e) => e.stopPropagation()}>
-            <div className="modal-wrapper">
+            <div className="modal-wrapper fixed top-0 left-0 right-0 bottom-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
               <button className="close-btn" onClick={() => setIsModalVisible(false)}>X</button>
               <div className={`container ${isActive ? 'active' : ''}`} id="container">
                 <div className="form-container sign-up">
@@ -127,7 +127,7 @@ export default function Navbar() {
                     <span>or use your email password</span>
                     <MyInputEmail />
                     <MyInputPassword />
-                    <a href="#">Forget Your Password?</a>
+                    <a href="#" className="text-sm text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-500 transition-all my-4">Forget Your Password?</a>
                     <button type="button">Sign In</button>
                   </form>
                 </div>
