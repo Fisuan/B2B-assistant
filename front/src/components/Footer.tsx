@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
-import InstagramIcon from './Images/InstagramIcon.png';
+import InstagramIcon from '../components/Images/Instagram Icon.png';
 import FacebookIcon from './Images/FacebookIcon.png'
 import TwitterIcon from './Images/Twitter Icon.png'
 import MyButton from './UI/button/MyButton'

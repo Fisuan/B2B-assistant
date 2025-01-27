@@ -105,64 +105,64 @@ const Navigationnn = () => {
       )}
 
       {/* Модальное окно */}
-      {isModalVisible && (
-        <div
-          className={`modal-overlay ${isModalVisible ? 'active display-flex' : ''} ${theme === 'dark' ? 'dark' : ''}`}
-          onClick={() => setIsModalVisible(false)}
-        >
-          <div className={`myModalContent bg-color-fff text-333 ${theme === 'dark' ? 'dark' : ''}`} onClick={(e) => e.stopPropagation()}>
-            <div className="modal-wrapper fixed top-0 left-0 right-0 bottom-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
-              <button className="close-btn" onClick={() => setIsModalVisible(false)}>X</button>
-              <div className={`container ${isActive ? 'active' : ''}`} id="container">
-                <div className="form-container sign-up">
-                  <form className="bg-white flex items-center justify-center flex-col px-[40px] h-full">
-                    <h1>Create Account</h1>
-                    <div className="social-icons">
-                      <a href="#" className="icon"><FontAwesomeIcon icon={faGooglePlusG} /></a>
-                      <a href="#" className="icon"><FontAwesomeIcon icon={faFacebookF} /></a>
-                      <a href="#" className="icon"><FontAwesomeIcon icon={faGithub} /></a>
-                    </div>
-                    <span className='text-[12px]'>or use your email for registration</span>
-                    <MyInputUser />
-                    <MyInputEmail />
-                    <MyInputPassword />
-                    <button className="bg-[#512da8] text-white text-[12px] py-[10px] px-[45px] border-[1px] border-transparent rounded-[8px] font-semibold tracking-[0.5px] uppercase mt-[10px] cursor-pointer" type="button">Sign Up</button>
-                  </form>
-                </div>
-                <div className="form-container sign-in">
-                  <form className="bg-white flex items-center justify-center flex-col px-[40px] h-full">
-                    <h1>Sign In</h1>
-                    <div className="social-icons">
-                      <a href="#" className="icon"><FontAwesomeIcon icon={faGooglePlusG} /></a>
-                      <a href="#" className="icon"><FontAwesomeIcon icon={faFacebookF} /></a>
-                      <a href="#" className="icon"><FontAwesomeIcon icon={faGithub} /></a>
-                    </div>
-                    <span className='text-[12px]'>or use your email password</span>
-                    <MyInputEmail />
-                    <MyInputPassword />
-                    <a href="#" className="text-sm text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-500 transition-all my-4">Forget Your Password?</a>
-                    <button className="bg-[#512da8] text-white text-[12px] py-[10px] px-[45px] border-[1px] border-transparent rounded-[8px] font-semibold tracking-[0.5px] uppercase mt-[10px] cursor-pointer" type="button">Sign In</button>
-                  </form>
-                </div>
-                <div className="toggle-container">
-                  <div className="toggle">
-                    <div className="toggle-panel toggle-left">
-                      <h1>Welcome Back!</h1>
-                      <p className='text-[14px] leading-[20px] tracking-[0.3px] my-[20px]'>Enter your personal details to use all of site features</p>
-                      <button className="bg-[#512da8] text-white text-[12px] py-[10px] px-[45px] border-[1px] border-transparent rounded-[8px] font-semibold tracking-[0.5px] uppercase mt-[10px] cursor-pointer" onClick={() => toggleForm('login')}>Sign In</button>
-                    </div>
-                    <div className="toggle-panel toggle-right">
-                      <h1>Hello, Friend!</h1>
-                      <p className='text-[14px] leading-[20px] tracking-[0.3px] my-[20px]'>Register with your personal details to use all of site features</p>
-                      <button className="bg-[#512da8] text-white text-[12px] py-[10px] px-[45px] border-[1px] border-transparent rounded-[8px] font-semibold tracking-[0.5px] uppercase mt-[10px] cursor-pointer" onClick={() => toggleForm('register')}>Sign Up</button>
-                    </div>
-                  </div>
-                </div>
+{isModalVisible && (
+  <div
+    className={`modal-overlay ${isModalVisible ? 'active display-flex' : ''} ${theme === 'dark' ? 'dark' : ''}`}
+    onClick={() => setIsModalVisible(false)}
+  >
+    <div className={`myModalContent bg-color-fff text-333 ${theme === 'dark' ? 'dark' : ''}`} onClick={(e) => e.stopPropagation()}>
+      <div className="modal-wrapper fixed top-0 left-0 right-0 bottom-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
+        <button className="close-btn" onClick={() => setIsModalVisible(false)}>X</button>
+        <div className={`container ${isActive ? 'active' : ''}`} id="container">
+          <div className="form-container sign-up">
+            <form className="bg-white flex items-center justify-center flex-col px-[40px] h-full">
+              <h1>Создать аккаунт</h1>
+              <div className="social-icons">
+                <a href="#" className="icon"><FontAwesomeIcon icon={faGooglePlusG} /></a>
+                <a href="#" className="icon"><FontAwesomeIcon icon={faFacebookF} /></a>
+                <a href="#" className="icon"><FontAwesomeIcon icon={faGithub} /></a>
+              </div>
+              <span className='text-[12px]'>или используйте ваш email для регистрации</span>
+              <MyInputUser />
+              <MyInputEmail />
+              <MyInputPassword />
+              <button className="bg-[#512da8] text-white text-[12px] py-[10px] px-[45px] border-[1px] border-transparent rounded-[8px] font-semibold tracking-[0.5px] uppercase mt-[10px] cursor-pointer" type="button">Зарегистрироваться</button>
+            </form>
+          </div>
+          <div className="form-container sign-in">
+            <form className="bg-white flex items-center justify-center flex-col px-[40px] h-full">
+              <h1>Войти</h1>
+              <div className="social-icons">
+                <a href="#" className="icon"><FontAwesomeIcon icon={faGooglePlusG} /></a>
+                <a href="#" className="icon"><FontAwesomeIcon icon={faFacebookF} /></a>
+                <a href="#" className="icon"><FontAwesomeIcon icon={faGithub} /></a>
+              </div>
+              <span className='text-[12px]'>или используйте пароль от вашего email</span>
+              <MyInputEmail />
+              <MyInputPassword />
+              <a href="#" className="text-sm text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-500 transition-all my-4">Забыли пароль?</a>
+              <button className="bg-[#512da8] text-white text-[12px] py-[10px] px-[45px] border-[1px] border-transparent rounded-[8px] font-semibold tracking-[0.5px] uppercase mt-[10px] cursor-pointer" type="button">Войти</button>
+            </form>
+          </div>
+          <div className="toggle-container">
+            <div className="toggle">
+              <div className="toggle-panel toggle-left">
+                <h1>С возвращением!</h1>
+                <p className='text-[14px] leading-[20px] tracking-[0.3px] my-[20px]'>Введите ваши данные для доступа ко всем функциям сайта</p>
+                <button className="bg-[#512da8] text-white text-[12px] py-[10px] px-[45px] border-[1px] border-transparent rounded-[8px] font-semibold tracking-[0.5px] uppercase mt-[10px] cursor-pointer" onClick={() => toggleForm('login')}>Войти</button>
+              </div>
+              <div className="toggle-panel toggle-right">
+                <h1>Привет, друг!</h1>
+                <p className='text-[14px] leading-[20px] tracking-[0.3px] my-[20px]'>Зарегистрируйтесь с вашими личными данными для доступа ко всем функциям сайта</p>
+                <button className="bg-[#512da8] text-white text-[12px] py-[10px] px-[45px] border-[1px] border-transparent rounded-[8px] font-semibold tracking-[0.5px] uppercase mt-[10px] cursor-pointer" onClick={() => toggleForm('register')}>Зарегистрироваться</button>
               </div>
             </div>
           </div>
         </div>
-      )}
+      </div>
+    </div>
+  </div>
+)}
     </motion.nav>
   );
 };
