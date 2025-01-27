@@ -6,6 +6,7 @@ from app.database import get_db
 from app.services.auth import AuthService
 from typing import List
 from pydantic import BaseModel
+from app.config import settings
 
 router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
@@ -23,13 +24,14 @@ class Message(BaseModel):
     text: str
 
 @router.post("/chat")
-async def chat_endpoint(message: dict):
+async def chat_endpoint(chat_request: ChatRequest):
     try:
-        response = await llm_service.get_assistant_response([
-            {"role": "user", "content": message["text"]}
-        ])
+        print(f"Received messages: {chat_request.messages}")
+        response = await llm_service.get_assistant_response(chat_request.messages)
+        print(f"Got response: {response}")
         return {"response": response}
     except Exception as e:
+        print(f"Error in chat endpoint: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/token")

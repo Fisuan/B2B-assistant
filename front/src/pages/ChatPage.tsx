@@ -13,20 +13,28 @@ export default function ChatPage() {
     setInput('');
 
     try {
+      console.log("Sending message:", input);
       const response = await fetch('http://localhost:8000/api/v1/chat', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // если есть токен
         },
-        body: JSON.stringify({ text: input }),
+        body: JSON.stringify({
+          messages: [{
+            role: "user",
+            content: input
+          }]
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to fetch response from AI');
+        const errorData = await response.json();
+        console.error("API Error:", errorData);
+        throw new Error(errorData.detail || 'Failed to fetch response from AI');
       }
 
       const data = await response.json();
+      console.log("Received response:", data);
       const aiMessage = { text: data.response, sender: 'ai' };
       setMessages((prevMessages) => [...prevMessages, aiMessage]);
     } catch (error) {
@@ -63,11 +71,9 @@ export default function ChatPage() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
         />
-        <button
-          onClick={handleSendMessage}
-        ><MySend/>
-  
-        </button>
+        <div onClick={handleSendMessage}>
+          <MySend/>
+        </div>
       </div>
     </div>
   );
