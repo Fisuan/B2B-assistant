@@ -9,8 +9,8 @@ https://b2bassistent-cx17lih1c-fisuans-projects.vercel.app
 There are several ways of editing your application. 
  
 Use  
- 
-Simply visit the [B2B-assistant] https://b2bassistent-cx17lih1c-fisuans-projects.vercel.app and start prompting. 
+
+ Presentation and photos: https://drive.google.com/drive/folders/1oW74zM660kqTfGLc5ukqw_neENpoEXI_?usp=sharing
  
 Changes made via Lovable will be committed automatically to this repo. 
  
